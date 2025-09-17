@@ -1,6 +1,147 @@
-/******* Change Box Model ***************/
+
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  background-image: url('/images/site/checkerboard.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #1e90ff;
+  color: white;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em; 
+}
+.logo-img {
+  max-width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+.account-link {
+  color: white;
+  text-decoration: none;
+}
+
+/* Navigation */
+.nav-list {
+  list-style: none;
+  display: flex;
+  padding: 10px 0;
+  background-color: #4682b4;
+}
+.nav-list li {
+  margin: 0 10px;
+}
+.nav-list a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8); 
+}
+.hero img:first-child {
+  max-width: 300px;
+  height: auto;
+}
+.hero img { 
+  max-width: 100%;
+  height: auto;
+}
+.hero-content {
+  margin-top: 10px;
+}
+.own-button {
+  max-width: 150px;
+  height: auto;
+  margin-top: 10px;
+}
+
+/* Featured Vehicles */
+.featured {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); 
+}
+.car-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center; 
+}
+.car-grid div {
+  flex: 1;
+  min-width: 0;
+}
+.car-grid img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Upgrades Section */
+.upgrades {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); 
+}
+.upgrade-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.upgrade-grid div {
+  flex: 1 1 100px;
+  text-align: center;
+}
+.upgrade-grid img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reviews Section */
+.reviews {
+  padding: 20px;
+  background-color: rgba(255, 255, 0.8); 
+}
+.reviews ul {
+  list-style: none;
+  padding: 0;
+}
+.reviews li {
+  margin: 10px 0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
+
+/* Media Query for Larger Screens */
+@media (min-width: 768px) {
+  .hero { padding: 40px; }
+  .car-grid, .upgrade-grid { flex-direction: row; }
+  .car-grid div, .upgrade-grid div { flex: 1 1 30%; }
+  .hero-content { font-size: 1.2em; }
 }
