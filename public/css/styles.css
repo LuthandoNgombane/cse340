@@ -4,3 +4,178 @@
 *:after {
   box-sizing: border-box;
 }
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  /*LN  Use the checkerboard*/
+  background-image: url('/images/site/checkerboard.jpg'); 
+}
+
+#wrapper {
+  background-color: white;
+  width: 100%;
+}
+
+img {
+  max-width: 100%; 
+  height: auto;
+}
+
+/* LN  HEADER & NAV */
+#top-header {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  background-color: #333;
+}
+
+nav ul li {
+  flex: 1; 
+}
+
+nav ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+}
+
+/* LN  HERO SECTION */
+#hero {
+  position: relative;
+  text-align: center;
+}
+
+#hero-text {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.7); 
+  padding: 10px;
+  z-index: 10; 
+}
+
+#hero-text h1 {
+  margin: 0 0 10px 0;
+  color: #000;
+}
+
+/* LN UPGRADES SECTION */
+#upgrades {
+  padding: 20px;
+}
+
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 15px;
+}
+
+.upgrade-card {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.img-container {
+  height: 80px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #003366; 
+  margin-bottom: 10px;
+}
+
+.img-container img {
+  max-height: 100%;
+  width: auto;
+}
+
+/* LN  REVIEWS SECTION */
+#reviews {
+  padding: 20px;
+}
+
+#reviews ul {
+  padding-left: 20px;
+}
+
+#reviews li {
+  margin-bottom: 10px;
+}
+
+/* LN  FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+}
+
+/* --------------------------------------------------
+   LN DESKTOP VIEW
+-------------------------------------------------- */
+@media screen and (min-width: 768px) {
+  
+  body {
+    padding: 20px; 
+  }
+
+  #wrapper {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 5px solid #003366; 
+    border-radius: 10px;
+  }
+
+  nav ul {
+    justify-content: center;
+  }
+  
+  nav ul li {
+    flex: none; 
+  }
+  
+  nav ul li a {
+    padding: 15px 25px;
+  }
+
+  /* LN Main Layout: Upgrades Left, Reviews Right */
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #hero {
+    grid-column: 1 / -1; 
+  }
+
+  #upgrades {
+    grid-column: 1 / 2;
+  }
+
+  #reviews {
+    grid-column: 2 / 3;
+  }
+}
