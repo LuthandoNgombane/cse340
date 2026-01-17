@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -132,6 +131,54 @@ footer {
   border-top: 1px solid #ccc;
 }
 
+/* Vehicle Classification List (Grid Layout) 
+   This handles the "Classic", "Sports", etc. views */
+#inv-display {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    list-style-type: none;
+}
+
+#inv-display li {
+    border: 1px solid #ccc;
+    text-align: center;
+    width: 300px;
+    padding: 15px;
+    /* height: 100%; */
+    margin-bottom: 1rem;
+}
+
+#inv-display li img {
+    height: 150px; 
+    object-fit: contain;
+}
+
+/* Inventory Detail View Styles 
+   This handles the specific car detail view */
+#inv-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+#inv-details img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#inv-details-info {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
 /* --------------------------------------------------
    LN DESKTOP VIEW
 -------------------------------------------------- */
@@ -166,6 +213,15 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+  
+  /* NEW: Fix for Classification Title & Grid to span full width */
+  main > h1 {
+    grid-column: 1 / -1;
+  }
+
+  #inv-display {
+    grid-column: 1 / -1;
+  }
 
   #hero {
     grid-column: 1 / -1; 
@@ -177,5 +233,22 @@ footer {
 
   #reviews {
     grid-column: 2 / 3;
+  }
+
+  /* Desktop View for Details: Switch to Side-by-Side */
+  #inv-details {
+      flex-direction: row; 
+      justify-content: space-between;
+      grid-column: 1 / -1;
+  }
+  
+  #inv-details img {
+      flex: 1; 
+      width: 50%;
+  }
+  
+  #inv-details-info {
+      flex: 1; 
+      margin-left: 20px;
   }
 }

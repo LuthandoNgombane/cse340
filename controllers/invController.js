@@ -19,4 +19,27 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ * Build inventory detail view
+ * ************************** */
+invCont.buildByInventoryId = async function (req, res, next) {
+  const inventoryId = parseInt(req.params.inventoryId)
+  const data = await invModel.getInventoryByInventoryId(inventoryId)
+  const grid = await utilities.buildInventoryDetail(data)
+  let nav = await utilities.getNav()
+  const className =  data.inv_year + " " + data.inv_make + " " + data.inv_model
+  res.render("./inventory/car-details", {
+    title: className,
+    nav,
+    grid,
+  })
+}
+
+/* ***************************
+ * Build Internal Server Error
+ * ************************** */
+invCont.buildBroken = async function (req, res, next) {
+  throw new Error("This is a planned 500 error for Task 3.")
+}
+
 module.exports = invCont

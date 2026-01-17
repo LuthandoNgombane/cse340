@@ -64,6 +64,36 @@ Util.buildClassificationGrid = async function(data){
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
+/* ****************************************
+ * Build the inventory detail view HTML
+ * **************************************** */
+Util.buildInventoryDetail = function(vehicle) {
+  let grid
+  if (vehicle) {
+    grid = '<div id="inv-details">'
+    grid += '<img src="' + vehicle.inv_image + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model + ' on CSE Motors" />'
 
+    grid += '<div id="inv-details-info">'
+    grid += '<h2>' + vehicle.inv_make + ' ' + vehicle.inv_model + ' Details</h2>'
+    grid += '<h3>Year: ' + vehicle.inv_year + '</h3>'
+    
+    let price = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(vehicle.inv_price)
+    
+    grid += '<h3>Price: ' + price + '</h3>'
+    grid += '<p class="inv-description">' + vehicle.inv_description + '</p>'
+    grid += '<p><strong>Color:</strong> ' + vehicle.inv_color + '</p>'
+      
+    let miles = new Intl.NumberFormat('en-US').format(vehicle.inv_miles)
+    grid += '<p><strong>Miles:</strong> ' + miles + '</p>'
+    grid += '</div>' 
+    grid += '</div>'
+  } else {
+    grid = '<p class="notice">Sorry, vehicle details could not be found.</p>'
+  }
+  return grid
+}
 
 module.exports = Util

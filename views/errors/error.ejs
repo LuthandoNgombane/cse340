@@ -1,3 +1,14 @@
 
+<% if (title) { %>
 <h1><%= title %></h1>
-<p><%= message %></p>
+<% } else { %>
+<h1>Server Error</h1>
+<% } %>
+
+<% if (message) { %>
+<p class="notice"><%= message %></p>
+<% } else { %>
+<p class="notice">Oh no! Something went wrong on our end.</p>
+<% } %>
+
+<p>Please try a different route or return <a href="/">home</a>.</p>
