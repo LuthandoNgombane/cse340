@@ -233,34 +233,3 @@ VALUES   (
     5
   );
 
-UPDATE inventory
-SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
-    inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
-
-UPDATE inventory
-SET inv_description = REPLACE(inv_description, 'small interiors', 'a huge interior')
-WHERE inv_id = 11;
-
----------------------------------------------------------------------------------------------
-
--- SELECT inv.inv_make, inv.inv_model, cls.classification_name
--- FROM inventory inv
--- INNER JOIN classification cls
--- ON inv.classification_id = cls.classification_id
--- WHERE cls.classification_id = 3 ;
-
--- SELECT *
--- FROM account
-
--- SELECT *
--- FROM inventory
-
--- INSERT INTO account (account_firstname, account_lastname, account_email, account_password)
--- VALUES ('Tony', 'Stark', 'tony@starkent.com', 'Iam1ronM@n');
-
--- UPDATE account
--- SET account_type = 'Admin'
--- WHERE account_id = 1;
-
--- DELETE FROM account
--- WHERE account_id = 1; 
