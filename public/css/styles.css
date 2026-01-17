@@ -131,8 +131,7 @@ footer {
   border-top: 1px solid #ccc;
 }
 
-/* Vehicle Classification List (Grid Layout) 
-   This handles the "Classic", "Sports", etc. views */
+/* LN Vehicle Classification List (Grid Layout) Styles */
 #inv-display {
     padding: 0;
     display: flex;
@@ -156,8 +155,7 @@ footer {
     object-fit: contain;
 }
 
-/* Inventory Detail View Styles 
-   This handles the specific car detail view */
+/* Inventory Detail View Styles */
 #inv-details {
     display: flex;
     flex-direction: column;
@@ -214,7 +212,6 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
   
-  /* NEW: Fix for Classification Title & Grid to span full width */
   main > h1 {
     grid-column: 1 / -1;
   }
