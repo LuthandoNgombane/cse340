@@ -7,10 +7,8 @@
  *************************/
 const express = require("express")
 
-
 //LN - include express-ejs-layouts module
 const expressLayouts = require("express-ejs-layouts")
-
 const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
@@ -20,6 +18,7 @@ const utilities = require("./utilities/")
 const session = require("express-session")
 const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
+const bodyParser = require("body-parser")
 
 /* ***********************
  * View Engine and Templates
@@ -52,6 +51,10 @@ app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+
+// server.js Middleware section
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 /* ***********************
  * Routes
