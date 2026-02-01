@@ -1,5 +1,5 @@
 // controllers/accountController.js
-const utilities = require("../utilities/")
+const utilities = require("../utilities")
 
 /* ****************************************
 * Deliver login view
