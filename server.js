@@ -52,7 +52,7 @@ app.use(function(req, res, next){
   next()
 })
 
-// server.js Middleware section
+//LN - server.js Middleware section
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -62,14 +62,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(static)
 
-// Index route
+//LN - Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
-// Inventory routes
+//LN - Inventory routes
 app.use("/inv", inventoryRoute)
-// Account routes
+//LN - Account routes
 app.use("/account", accountRoute)
 
-// File Not Found Route - must be last route in list
+//LN - File Not Found Route
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })

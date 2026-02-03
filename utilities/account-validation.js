@@ -7,7 +7,7 @@ const validate = {}
  * ********************************* */
 validate.registationRules = () => {
   return [
-    // firstname is required and must be string
+    //LN - firstname is required and must be string
     body("account_firstname")
       .trim()
       .escape()
@@ -15,7 +15,7 @@ validate.registationRules = () => {
       .isLength({ min: 1 })
       .withMessage("Please provide a first name."),
 
-    // lastname is required and must be string
+    //LN - lastname is required and must be string
     body("account_lastname")
       .trim()
       .escape()
@@ -23,7 +23,7 @@ validate.registationRules = () => {
       .isLength({ min: 2 })
       .withMessage("Please provide a last name."),
 
-    // valid email is required
+    //LN - valid email is required
     body("account_email")
       .trim()
       .escape()
@@ -32,7 +32,7 @@ validate.registationRules = () => {
       .normalizeEmail() 
       .withMessage("A valid email is required."),
 
-    // password is required and must be strong
+    //LN - password is required and must be strong
     body("account_password")
       .trim()
       .notEmpty()

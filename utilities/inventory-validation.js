@@ -39,7 +39,7 @@ validate.checkListData = async (req, res, next) => {
   let errors = validationResult(req)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
-    // Logic to determine which view to return to
+    //LN - Logic to determine which view to return to
     const isClassification = req.url.includes("addClassification")
     const view = isClassification ? "./inventory/add-classification" : "./inventory/add-inventory"
     const title = isClassification ? "Add New Classification" : "Add New Vehicle"
@@ -54,7 +54,7 @@ validate.checkListData = async (req, res, next) => {
       title,
       nav,
       classificationSelect,
-      ...req.body // This provides stickiness
+      ...req.body 
     })
     return
   }
