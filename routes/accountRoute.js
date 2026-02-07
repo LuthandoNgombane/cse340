@@ -30,4 +30,10 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 )
 
+router.get(
+  "/", 
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildManagementView)
+)
+
 module.exports = router
