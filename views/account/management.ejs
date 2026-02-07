@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+<h1><%= title %></h1>
+
+<%- messages() %>
+
+<div class="management-container">
+    <p>You're logged in.</p>
+    
+    </div>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+ <% }) %>
+ </ul>
+<% } %>
+
+<%- include('../partials/footer') %>

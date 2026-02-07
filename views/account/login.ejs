@@ -15,3 +15,11 @@
     
     <p>No account? <a href="/account/register">Sign-up</a></p>
 </div>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+ <% }) %>
+ </ul>
+<% } %>

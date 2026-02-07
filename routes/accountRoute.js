@@ -19,6 +19,9 @@ router.post(
 //LN - Route to build registration view
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
+//LN - Route to build account management view
+router.get("/", utilities.handleErrors(accountController.buildManagementView))
+
 //LN - Process the registration data 
 router.post(
   "/register", 
