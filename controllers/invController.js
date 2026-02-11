@@ -44,6 +44,7 @@ invCont.buildManagement = async function (req, res, next) {
   res.render("./inventory/management", {
     title: "Vehicle Management",
     nav,
+    classificationSelect,
     errors: null,
   })
 }
@@ -81,11 +82,13 @@ invCont.addClassification = async function (req, res) {
   const result = await invModel.addClassification(classification_name)
   
   if (result) {
-    let nav = await utilities.getNav() // Re-build nav to include new classification
+    let nav = await utilities.getNav()
+    const classificationSelect = await utilities.buildClassificationList()
     req.flash("notice", `The ${classification_name} classification was successfully added.`)
     res.status(201).render("./inventory/management", {
       title: "Vehicle Management",
       nav,
+      classificationSelect,
       errors: null,
     })
   } else {
@@ -104,7 +107,6 @@ invCont.addClassification = async function (req, res) {
  * ************************** */
 invCont.buildAddInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
-  // Generate the dynamic select list
   let classificationSelect = await utilities.buildClassificationList()
   res.render("./inventory/add-inventory", {
     title: "Add New Vehicle",
@@ -119,6 +121,7 @@ invCont.buildAddInventory = async function (req, res, next) {
  * ************************** */
 invCont.addInventory = async function (req, res) {
   let nav = await utilities.getNav()
+  let classificationSelect = await utilities.buildClassificationList()
   const { 
     inv_make, inv_model, inv_year, inv_description, 
     inv_image, inv_thumbnail, inv_price, inv_miles, 
@@ -136,6 +139,7 @@ invCont.addInventory = async function (req, res) {
     res.status(201).render("./inventory/management", {
       title: "Vehicle Management",
       nav,
+      classificationSelect,
       errors: null,
     })
   } else {
