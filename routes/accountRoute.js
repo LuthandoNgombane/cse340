@@ -20,7 +20,10 @@ router.post(
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 //LN - Route to build account management view
-router.get("/", utilities.handleErrors(accountController.buildManagementView))
+router.get(
+"/",
+regValidate.checkLoginData,
+utilities.handleErrors(accountController.buildManagementView))
 
 //LN - Process the registration data 
 router.post(
@@ -28,12 +31,6 @@ router.post(
   regValidate.registationRules(), 
   regValidate.checkRegData, 
   utilities.handleErrors(accountController.registerAccount)
-)
-
-router.get(
-  "/", 
-  utilities.checkLogin,
-  utilities.handleErrors(accountController.buildManagementView)
 )
 
 module.exports = router
