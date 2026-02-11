@@ -22,7 +22,7 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 //LN - Route to build account management view
 router.get(
 "/",
-regValidate.checkLoginData,
+utilities.checkLogin,
 utilities.handleErrors(accountController.buildManagementView))
 
 //LN - Process the registration data 
