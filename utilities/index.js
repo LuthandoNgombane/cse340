@@ -156,7 +156,19 @@ Util.checkLogin = (req, res, next) => {
   }
 }
 
-
+/* ****************************************
+ * Check Account Type
+ * ************************************ */
+Util.checkAccountType = (req, res, next) => {
+  if (res.locals.loggedin && 
+      (res.locals.accountData.account_type === "Employee" || 
+       res.locals.accountData.account_type === "Admin")) {
+    next()
+  } else {
+    req.flash("notice", "Please log in with an appropriate account to access this area.")
+    return res.redirect("/account/login")
+  }
+}
 
 
 

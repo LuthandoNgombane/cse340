@@ -61,4 +61,19 @@ router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteView));
 // Route to handle the actual deletion
 router.post("/delete", utilities.handleErrors(invController.deleteItem));
 
+// Apply this middleware to the following routes:
+const authCheck = [utilities.checkLogin, utilities.checkAccountType]
+
+// Example of applying to Management view
+router.get("/", authCheck, utilities.handleErrors(invController.buildManagement))
+
+// Apply authCheck to all Add/Edit/Delete routes
+router.get("/addClassification", authCheck, utilities.handleErrors(invController.buildAddClassification))
+router.get("/addInventory", authCheck, utilities.handleErrors(invController.buildAddInventory))
+router.get("/edit/:inv_id", authCheck, utilities.handleErrors(invController.editInventoryView))
+router.post("/update/", authCheck, utilities.handleErrors(invController.updateInventory))
+router.get("/delete/:inv_id", authCheck, utilities.handleErrors(invController.deleteView))
+router.post("/delete", authCheck, utilities.handleErrors(invController.deleteItem))
+
+
 module.exports = router;
