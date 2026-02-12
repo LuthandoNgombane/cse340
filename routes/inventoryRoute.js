@@ -51,10 +51,14 @@ router.get(
 
 // Process the update request
 router.post(
-  "/update/", // Change your EJS form action to /inv/update/ to match this 
-  // You should also add your validation middleware here 
+  "/update/", 
   utilities.handleErrors(invController.updateInventory)
 )
 
+// Route to deliver the delete confirmation view
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteView));
+
+// Route to handle the actual deletion
+router.post("/delete", utilities.handleErrors(invController.deleteItem));
 
 module.exports = router;
