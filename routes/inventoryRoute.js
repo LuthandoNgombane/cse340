@@ -49,4 +49,12 @@ router.get(
   utilities.handleErrors(invController.editInventoryView)
 )
 
+// Process the update request
+router.post(
+  "/update/", // Change your EJS form action to /inv/update/ to match this 
+  // You should also add your validation middleware here 
+  utilities.handleErrors(invController.updateInventory)
+)
+
+
 module.exports = router;
