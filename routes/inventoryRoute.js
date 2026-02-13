@@ -75,5 +75,10 @@ router.post("/update/", authCheck, utilities.handleErrors(invController.updateIn
 router.get("/delete/:inv_id", authCheck, utilities.handleErrors(invController.deleteView))
 router.post("/delete", authCheck, utilities.handleErrors(invController.deleteItem))
 
+// Update the management route
+router.get("/", 
+  utilities.checkAccountType, // This is the gatekeeper
+  utilities.handleErrors(invController.buildManagementView)
+)
 
 module.exports = router;
