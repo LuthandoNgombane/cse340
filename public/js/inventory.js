@@ -25,13 +25,28 @@ classificationList.addEventListener("change", function () {
 // Build inventory items into HTML table components and inject into DOM 
 function buildInventoryList(data) { 
   let inventoryDisplay = document.getElementById("inventoryDisplay"); 
+
+  //LN - Get the account type from the hidden input we created
+  const accountType = document.getElementById("accountType").value;
+
   let dataTable = '<thead><tr><th>Vehicle Name</th><td>&nbsp;</td><td>&nbsp;</td></tr></thead>'; 
   dataTable += '<tbody>'; 
-  data.forEach(function (element) { 
+
+  data.forEach(function (element) 
+  { 
     console.log(element.inv_id + ", " + element.inv_model); 
     dataTable += `<tr><td>${element.inv_make} ${element.inv_model}</td>`; 
-    dataTable += `<td><a href='/inv/edit/${element.inv_id}' title='Click to update'>Modify</a></td>`; 
-    dataTable += `<td><a href='/inv/delete/${element.inv_id}' title='Click to delete'>Delete</a></td></tr>`; 
+
+    if (accountType === "Employee" || accountType === "Admin") 
+    {
+      dataTable += `<td><a href='/inv/edit/${element.inv_id}' title='Click to update'>Modify</a></td>`;
+      dataTable += `<td><a href='/inv/delete/${element.inv_id}' title='Click to delete'>Delete</a></td></tr>`;
+    } 
+    else 
+    {
+      dataTable += `<td>&nbsp;</td><td>&nbsp;</td></tr>`;
+    }
+
   }) 
   dataTable += '</tbody>'; 
   inventoryDisplay.innerHTML = dataTable; 
