@@ -52,6 +52,7 @@ async function updateAccount(account_firstname, account_lastname, account_email,
       account_firstname,
       account_lastname,
       account_email,
+      account_type,
       account_id
     ])
     return data.rows[0]

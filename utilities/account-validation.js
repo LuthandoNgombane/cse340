@@ -136,7 +136,11 @@ validate.updateAccountRules = () => {
             throw new Error("Email exists. Please use a different email.")
           }
         }),
-
+      body("account_type")
+        .trim()
+        .notEmpty()
+        .isIn(['Client', 'Employee', 'Admin'])
+        .withMessage("Please select a valid account type."),
   ]
 }
 

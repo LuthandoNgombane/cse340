@@ -157,12 +157,13 @@ async function buildAccountUpdate(req, res, next) {
 * *************************************** */
 async function updateAccount(req, res) {
   let nav = await utilities.getNav()
-  const { account_firstname, account_lastname, account_email, account_id } = req.body
+  const { account_firstname, account_lastname, account_email, account_type, account_id } = req.body
 
   const updateResult = await accountModel.updateAccount(
     account_firstname,
     account_lastname,
     account_email,
+    account_type,
     account_id
   )
 
@@ -202,7 +203,7 @@ async function updatePassword(req, res) {
     req.flash("notice", "Password updated successfully.")
     res.redirect("/account/")
   } else {
-    const accountData = await accountModel.getAccountById(account_id) // Fetch data first
+    const accountData = await accountModel.getAccountById(account_id)
     req.flash("notice", "Sorry, the password update failed.")
     res.status(501).render("account/update-account", {
       title: "Edit Account",

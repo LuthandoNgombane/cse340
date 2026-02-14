@@ -24,6 +24,14 @@
 
         <button type="submit">Update Info</button>
         <input type="hidden" name="account_id" <% if(locals.account_id) { %> value="<%= locals.account_id %>" <% } %>>
+    
+        <label for="account_type">Account Role:</label>
+        <select name="account_type" id="account_type" required>
+          <option value="Client" <%= account_type === 'Client' ? 'selected' : '' %>>Client</option>
+          <option value="Employee" <%= account_type === 'Employee' ? 'selected' : '' %>>Employee</option>
+          <option value="Admin" <%= account_type === 'Admin' ? 'selected' : '' %>>Admin</option>
+        </select>
+
     </form>
 
     <hr>
