@@ -169,11 +169,26 @@ async function updateAccount(req, res) {
   )
 
   if (updateResult) {
-    // Re-query the account data after update as required
+    
+    //LN - Fetch the fresh data from the database
     const updatedAccountData = await accountModel.getAccountById(account_id)
-    // Update the JWT cookie with new information if needed, then redirect
+    
+    //LN - Remove the password before signing the token
+    delete updatedAccountData.account_password
+    
+    //LN - Create a new JWT with the updated info 
+    const accessToken = jwt.sign(updatedAccountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+    
+    //LN - Set the new cookie 
+    if (process.env.NODE_ENV === 'development') {
+      res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
+    } else {
+      res.cookie("jwt", accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
+    }
+
     req.flash("notice", "Your account information has been updated.")
     res.redirect("/account/")
+
   } else {
     req.flash("notice", "Sorry, the update failed.")
     res.status(501).render("account/update-account", {
