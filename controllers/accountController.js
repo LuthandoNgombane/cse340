@@ -148,6 +148,7 @@ async function buildAccountUpdate(req, res, next) {
     account_firstname: accountData.account_firstname,
     account_lastname: accountData.account_lastname,
     account_email: accountData.account_email,
+    account_type: accountData.account_type,
     account_id: accountData.account_id,
   })
 }
@@ -182,6 +183,7 @@ async function updateAccount(req, res) {
       account_firstname,
       account_lastname,
       account_email,
+      account_type: accountData.account_type,
       account_id,
     })
   }
