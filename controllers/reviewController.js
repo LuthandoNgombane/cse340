@@ -20,7 +20,7 @@ revCont.addReview = async function (req, res) {
       res.redirect(`/inv/detail/${inv_id}`)
     }
   } catch (error) {
-    // This satisfies your "Error Handling" improvement
+    // "Error Handling
     req.flash("notice", "A server error occurred while posting your review.")
     res.redirect(`/inv/detail/${inv_id}`)
   }
@@ -49,7 +49,7 @@ revCont.editReviewView = async function (req, res) {
   let nav = await utilities.getNav()
   const reviewData = await revModel.getReviewById(review_id) 
   
-  // Check if reviewData exists to satisfy your "Error Handling" improvement
+  // Check if reviewData exists
   if (!reviewData) {
     req.flash("notice", "Review not found.")
     return res.redirect("/account/")

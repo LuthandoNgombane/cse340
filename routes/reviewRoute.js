@@ -5,7 +5,6 @@ const regUtil = require("../utilities")
 const validate = require("../utilities/review-validation")
 
 // Route to add a new review
-// Only logged-in users should be able to post
 router.post(
   "/add",
   regUtil.checkLogin,
@@ -14,7 +13,7 @@ router.post(
   revCont.addReview
 )
 
-// Add routes for Edit and Delete as needed for your final project
+//LN - routes for Edit and Delete as needed for your final project
 router.get("/edit/:review_id", revCont.editReviewView)
 router.post("/update", revCont.updateReview)
 router.get("/delete-confirm/:review_id", regUtil.handleErrors(revCont.deleteReviewView))

@@ -11,7 +11,7 @@ validate.reviewRules = () => {
     body("review_text")
       .trim()
       .isLength({ min: 1 })
-      .withMessage("Please provide a review."), // Feedback for the user
+      .withMessage("Please provide a review."), 
   ]
 }
 
