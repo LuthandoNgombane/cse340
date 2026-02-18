@@ -1,0 +1,17 @@
+<div class="form-container">
+  <h2><%= title %></h2>
+  <%- messages() %>
+  <p>Confirm deletion of this review. This cannot be undone.</p>
+  
+  <form action="/review/delete-review" method="post" class="standard-form">
+    <label>Review Date:</label>
+    <input type="text" value="<%= new Date(review.review_date).toLocaleDateString() %>" readonly>
+
+    <label>Review Content:</label>
+    <textarea readonly><%= review.review_text %></textarea>
+    
+    <input type="hidden" name="review_id" value="<%= review.review_id %>">
+    
+    <button type="submit">Confirm Delete</button>
+  </form>
+</div>

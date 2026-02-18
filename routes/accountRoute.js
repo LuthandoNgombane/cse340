@@ -43,15 +43,15 @@ router.get(
 // Process the account information update
 router.post(
   "/update-info",
-  regValidate.updateAccountRules(), // You will create these rules next
-  regValidate.checkUpdateData,      // You will create this check next
+  regValidate.updateAccountRules(), 
+  regValidate.checkUpdateData,     
   utilities.handleErrors(accountController.updateAccount)
 )
 
 // Process the password change
 router.post(
   "/update-password",
-  regValidate.passwordRules(),      // Use your existing password logic
+  regValidate.passwordRules(),      
   regValidate.checkUpdateData,
   utilities.handleErrors(accountController.updatePassword)
 )

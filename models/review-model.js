@@ -48,6 +48,19 @@ async function getReviewsByAccountId(account_id) {
 }
 
 /* *****************************
+* NEW: Get a single review by its ID
+* ***************************** */
+async function getReviewById(review_id) {
+  try {
+    const sql = "SELECT * FROM public.review WHERE review_id = $1"
+    const data = await db.query(sql, [review_id])
+    return data.rows[0]
+  } catch (error) {
+    return error.message
+  }
+}
+
+/* *****************************
 * Update a review
 * ***************************** */
 async function updateReview(review_id, review_text) {
@@ -75,6 +88,7 @@ module.exports = {
   addReview,
   getReviewsByInvId,
   getReviewsByAccountId,
+  getReviewById, 
   updateReview,
   deleteReview
 }
